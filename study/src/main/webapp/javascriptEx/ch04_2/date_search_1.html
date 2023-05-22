@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="icon" href="data:;base64,iVBORw0KGgo=">
+
+<style type="text/css">
+* { margin: 0; padding: 0; }
+*, *::after, *::before { box-sizing: border-box; }
+
+body { font-size: 16px; font-family: "맑은 고딕", 나눔고딕, 돋움, sans-serif; }
+
+table {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+input {
+	text-align: center;
+}
+
+</style>
+
+<script type="text/javascript">
+
+function isValidDateFormat(date){
+	   let p= /^[12][0-9]{3}[\.|\-|\/]?[0-9]{2}[\.|\-|\/]?[0-9]{2}$/;
+	   if(! p.test(date)){
+		   return false;
+	   }
+	   
+	   date=date.replace(/(\.)|(\-)|(\/)/g,"");
+	   
+	   let y=parseInt(date.substring(0,4));
+	   let m=parseInt(date.substring(4,6));
+	   let d=parseInt(date.substring(6));
+	   
+	   if(m<1 || m>12){
+		   return false;
+	   }
+	   
+	   let lastDay=(new Date(y,m,0)).getDate();
+	   if(d < 1 || d > lastDay){
+		   return false;
+	   }
+	   
+	   return true;
+	}
+
+function toDate(){
+//오늘	
+	let now=new Date();
+	let y=now.getFullYear();
+	let m=now.getMonth()+1;
+	let d=now.getDate();
+	
+	if(m<10){
+		m='0'+m;
+	}
+
+	if(d<10){
+		d='0'+m;
+	}
+	
+	out=y+'-'+m+'-'+d;
+	document.querySelector('#startDate').value=out;
+	document.querySelector('#endDate').value=out;
+
+}
+function oneWeek(){
+//일주일
+	let s=document.querySelector('#endDate').value;
+	let ww=new Date(s);
+	let y=ww.getFullYear();
+	let m=ww.getMonth()+1;
+	let d=ww.getDate();
+	
+	let www=new Date(y,m-1,d-7);
+	let wy=www.getFullYear();
+	let wm=www.getMonth()+1;
+	let wd=www.getDate();
+	
+	if(wm<10){
+		wm='0'+wm;
+	}
+	
+	if(wd<10){
+		wd='0'+wd;
+	}
+	
+	out=wy+'-'+wm+'-'+wd;
+	document.querySelector('#startDate').value=out;
+	
+}
+function oneMonth(){
+//1개월	
+	let s=document.querySelector('#endDate').value;
+	let ww=new Date(s);
+	let y=ww.getFullYear();
+	let m=ww.getMonth()+1;
+	let d=ww.getDate();
+	
+	let www=new Date(y,m-2,d);
+	let wy=www.getFullYear();
+	let wm=www.getMonth()+1;
+	let wd=www.getDate();
+	
+	if(wm<10){
+		wm='0'+wm;
+	}
+	
+	if(wd<10){
+		wd='0'+wd;
+	}
+	
+	out=wy+'-'+wm+'-'+wd;
+	document.querySelector('#startDate').value=out;
+}
+function thMonth(){
+//3개월	
+	let s=document.querySelector('#endDate').value;
+	let ww=new Date(s);
+	let y=ww.getFullYear();
+	let m=ww.getMonth()+1;
+	let d=ww.getDate();
+	
+	let www=new Date(y,m-4,d);
+	let wy=www.getFullYear();
+	let wm=www.getMonth()+1;
+	let wd=www.getDate();
+	
+	if(wm<10){
+		wm='0'+wm;
+	}
+	
+	if(wd<10){
+		wd='0'+wd;
+	}
+	
+	out=wy+'-'+wm+'-'+wd;
+	document.querySelector('#startDate').value=out;
+}
+function sixMonth(){
+//6개월	
+	let s=document.querySelector('#endDate').value;
+	let ww=new Date(s);
+	let y=ww.getFullYear();
+	let m=ww.getMonth()+1;
+	let d=ww.getDate();
+	
+	let www=new Date(y,m-7,d);
+	let wy=www.getFullYear();
+	let wm=www.getMonth()+1;
+	let wd=www.getDate();
+	
+	if(wm<10){
+		wm='0'+wm;
+	}
+	
+	if(wd<10){
+		wd='0'+wd;
+	}
+	
+	out=wy+'-'+wm+'-'+wd;
+	document.querySelector('#startDate').value=out;
+}
+function oneYear(){
+//1년	
+	let s=document.querySelector('#endDate').value;
+	let ww=new Date(s);
+	let y=ww.getFullYear();
+	let m=ww.getMonth()+1;
+	let d=ww.getDate();
+	
+	let www=new Date(y-1,m-1,d);
+	let wy=www.getFullYear();
+	let wm=www.getMonth()+1;
+	let wd=www.getDate();
+	
+	if(wm<10){
+		wm='0'+wm;
+	}
+	
+	if(wd<10){
+		wd='0'+wd;
+	}
+	
+	out=wy+'-'+wm+'-'+wd;
+	document.querySelector('#startDate').value=out;
+}
+function searchDate(){
+//검색
+	let startDate=document.querySelector('#startDate').value;
+	let endDate=document.querySelector('#endDate').value;
+
+	if(! isValidDateFormat(startDate) || ! isValidDateFormat(endDate)){
+		alert('날짜 형식이 올바르지 않습니다.');
+		return;
+	}
+	
+	if(startDate>endDate){
+		alert('검색 일자보다 전날은 검색할 수 없습니다.');
+		return;
+	}
+	
+	alert('성공 !!');
+}
+
+
+</script>
+
+</head>
+<body>
+
+<table>
+	<tr>
+		<td>
+		<button type="button" onclick="toDate();">오늘</button>
+		<button type="button" onclick="oneWeek();">일주일</button>
+		<button type="button" onclick="oneMonth();">1개월</button>
+		<button type="button" onclick="thMonth();">3개월</button>
+		<button type="button" onclick="sixMonth();">6개월</button>
+		<button type="button" onclick="oneYear();">1년</button>
+		&nbsp;&nbsp;
+		<input type="text" id="startDate" > ~
+		<input type="text" id="endDate" > &nbsp;
+		<button type="button" onclick="searchDate();">검색</button>
+		</td>
+	</tr>
+</table>
+
+</body>
+</html>

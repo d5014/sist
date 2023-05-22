@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>회원가입페이지</title>
+
+<link rel="stylesheet" href="../css/style.css" type="text/css">
+<style type="text/css">
+
+.body-container {
+	width: 700px;
+	margin: 20px auto;
+	padding: 15px;
+}
+
+.body-container fieldset {
+	padding: 7px 7px;
+	background: white;
+}
+
+.body-container p {
+	line-height: 220%;
+}
+
+ul > li {
+	list-style: none;
+	padding: 7px 5px;
+}
+
+input {
+	width: 300px;
+	height: 30px;
+}
+
+select {
+	width: 300px;
+	height: 30px;
+	text-align: center;
+}
+
+button {
+	width: 300px;
+	height: 30px;
+	text-align: center;
+}
+
+</style>
+
+<script type="text/javascript">
+function send(){
+	const f=document.myForm;
+	let s;
+	
+	s = f.id.value+"님 회원가입이 완료되었습니다.";
+	
+	alert(s);
+}
+
+
+</script>
+</head>
+<body>
+
+<div class="body-container">
+<h3 style="text-align: center;">회원가입</h3>
+
+<form name="myForm" action="javascript:send()" method="post" style="text-align: center;">
+	<fieldset>
+	<ul>
+		<li>아이디</li>
+		<li><input type="text" name="id" required="required" maxlength="10" pattern="[A-Za-z0-9]+" placeholder="@abc.com"></li>
+		<li>패스워드</li>
+		<li><input type="password" name="pwd" required="required"></li>
+		<li>패스워드재확인</li>
+		<li><input type="password" name="pwd" required="required"></li>
+		<li>이름</li>
+		<li><input type="text" name="name" required="required"></li>
+		<li>생년월일</li>
+		<li><input type="date" name="birth"></li>
+		<li>성별</li>
+		<li>
+			<select name="gender">
+               <option value="">성별 선택</option>
+               <option value="F">여자</option>
+               <option value="M">남자</option>
+            </select>
+		</li>
+		<li>본인확인이메일</li>
+		<li><input type="text" name="email1" required="required" placeholder="입력" style="width: 200px;">
+            <select name="email2" style="width: 90px;">
+               <option value="">직접입력</option>
+               <option value="naver.com" >naver.com</option>
+               <option value="hanmail.net">hanmail.net</option>
+               <option value="gmail.com" >gmail.com</option>
+            </select>	
+        </li>	
+		<li>휴대전화</li>
+		<li>
+            <select name="num1">
+               <option value="+82" selected="selected">대한민국 +82</option>
+               <option value="+1" >미국 +1</option>
+               <option value="+81">일본 +81</option>
+               <option value="+86" >중국 +86</option>
+            </select>		
+		</li>
+		<li>
+            <input type="text" name="num2" required="required" placeholder="전화번호를 입력하세요" style="width: 200px;">
+            <button type="button" style="width: 90px;">인증번호받기</button>
+		</li>
+		<li><input type="text" name="num3" required="required" placeholder="인증번호를 입력하세요"></li>
+		<li><button type="submit" name="sendButton">가입하기</button></li>
+	</ul>
+	</fieldset>
+	</form>
+</div>
+</body>
+</html>

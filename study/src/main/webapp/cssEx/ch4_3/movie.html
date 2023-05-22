@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style type="text/css">
+* {margin: 0; padding: 0;}
+* { font-family: "맑은 고딕", 나눔고딕, 돋움, sans-serif; font-size: 15px; }
+
+img {
+	height: 300px;
+	width: 200px;
+	border-radius: 5px;
+	margin: 5px;
+}
+
+div > h4 {
+	line-height: 10px;
+}
+
+p {
+	color: gray;
+	text-align: center;
+}
+
+.flex-container {
+	width: 100%;
+	height : 450px;
+	background: #eee;
+}
+
+.box {
+	width: 220px; height: 380px; line-height: 50px;
+	text-align: center;
+	margin: 5px;
+	position: relative;
+}
+
+/* 연령 딱지 달기*/
+.absolute-box {
+	width: 150px; height: 150px;
+	
+	position: absolute;
+	left: 50px;
+	top: 50px;
+	background: #333;
+	color: #eee;
+	font-weight: bold;
+	text-align: center;
+	line-height: 150px;
+}
+
+.flex {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+</style>
+</head>
+<body>
+
+	<div class="flex-container flex">
+		<div class="box"><img src="../img3/m1.jpg" class="img">
+			<h4>극장판 주술회전</h4>
+			<p>94% 예매율 24.8%</p>
+		</div>
+		<div class="box"><img src="../img3/m2.jpg" class="img">
+			<h4>뜨거운 피</h4>
+			<p>99% 예매율 16.8%</p>
+		</div>
+		<div class="box"><img src="../img3/m3.jpg" class="img">
+			<h4>모비우스</h4>
+			<p>94% 예매율 24.8%</p>
+		</div>
+		<div class="box"><img src="../img3/m4.jpg" class="img">
+			<h4>벨파스트</h4>
+			<p>94% 예매율 4.5%</p>
+		</div>
+		<div class="box"><img src="../img3/m5.jpg" class="img">
+			<h4>패왕별희 디 오리지널</h4>
+			<p>?  예매율 3.6%</p>
+		</div>
+	</div>
+
+
+</body>
+</html>

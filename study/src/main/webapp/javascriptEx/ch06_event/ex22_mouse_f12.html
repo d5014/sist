@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="icon" href="data:;base64,iVBORw0KGgo=">
+
+<script type="text/javascript">
+window.addEventListener('load',()=>{
+	document.addEventListener('keydown',function(e){
+		// e.keyCode===123
+		if(e.key==='F12'){
+			e.preventDefault();//이벤트를 막아줌.
+			alert('f12사용금지');
+		}
+	});
+	document.addEventListener('mousedown',function(e){
+		if(e.button === 2 || e.button === 3){
+			alert('우측사용금지');
+		}
+	});
+});
+
+
+
+</script>
+
+
+</head>
+<body>
+
+<h3>F12, 마우스 우측 금지</h3>
+f12와 오른쪽 마우스를 클릭했을 때 alert 창 띄우기
+
+
+</body>
+</html>

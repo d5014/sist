@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="icon" href="data:;base64,iVBORw0KGgo=">
+</head>
+<body>
+
+<h3>apply(), call()</h3>
+
+<script type="text/javascript">
+var obj = {
+		name : '자바',
+		sayName : function(){
+			console.log(this.name);
+		}
+};
+
+var obj2={
+		name : '스프링'
+};
+
+obj.sayName();//자바
+//obj2.sayName();//에러
+
+//obj.sayName.call();// 아무것도 출력되지 않음.
+//obj.sayName.call(null);// 아무것도 출력되지 않음.
+obj.sayName.call(obj);// this의 값을 obj로 넘겨줌-obj의 name 반환 -> 자바
+obj.sayName.call(obj2);// 스프링, sayName의 this는 obj2
+
+
+
+</script>
+
+
+</body>
+</html>

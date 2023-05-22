@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="icon" href="data:;base64,iVBORw0KGgo=">
+
+<style type="text/css">
+.layout {width : 300px; padding : 50px; text-align : center;}
+.yb {background: yellow;}
+.gb {background: green;}
+.border {border: 5px dotted gray;}
+</style>
+
+<script type="text/javascript">
+//스크립트를 body 상단에 만들기 때문에 window를 로드해주어야 함
+window.addEventListener('load',()=>{
+	
+	document.querySelector('.btn1').addEventListener('click',()=>{
+		//btn1에 대한 click 이벤트 설정 - 클래스 추가
+		const layoutEl=document.querySelector('.layout');
+		
+		//아래처럼 설정할 경우, 기존 클래스는 지우고 yb클래스만 설정하게 됨
+		//layoutEl.className='yb';
+		
+		//기존의 클래스가 사라지지 않고 yb클래스를 추가할 수 있음(사용을 권장하지 않음)
+		//layoutEl.className+=' yb';
+		
+		//classList : 읽기전용으로 클래스의 속성의 컬렉션
+		layoutEl.classList.add('yb','border');//클래스 추가
+		
+	});
+	
+	document.querySelector('.btn2').addEventListener('click',()=>{
+		//btn2에 대한 click 이벤트 설정 - 클래스 토글
+		const layoutEl=document.querySelector('.layout');
+		
+		layoutEl.classList.toggle('border');
+		
+		//let n=15;
+		//layoutEl.classList.toggle('gb',n<10);//n이 10보다 적으면 gb라는 클래스 추가
+		
+	});
+	
+	document.querySelector('.btn3').addEventListener('click',()=>{
+		//btn3에 대한 click 이벤트 설정 - 클래스 제거
+		const layoutEl=document.querySelector('.layout');
+		
+		//layoutEl.classList.remove('yb');
+		//layoutEl.classList.remove('border');
+		
+		layoutEl.classList.remove('yb','border');
+		
+	});
+	
+	document.querySelector('.btn4').addEventListener('click',()=>{
+		//btn4에 대한 click 이벤트 설정 - 클래스 존재 여부
+		const layoutEl=document.querySelector('.layout');
+		
+		let b= layoutEl.classList.contains('border');
+		alert(b);
+		
+	});
+	
+	document.querySelector('.btn5').addEventListener('click',()=>{
+		//btn5에 대한 click 이벤트 설정 - 클래스 교체
+		const layoutEl=document.querySelector('.layout');
+		layoutEl.classList.replace('yb','gb');
+			//없으면 교체하지 않음.
+		
+		
+		
+	});
+	
+});
+</script>
+
+
+</head>
+<body>
+
+<h3>class 속성</h3>
+
+<div class="layout">클래스 추가 및 삭제</div>
+<hr>
+
+<p>
+	<button type="button" class="btn1">클래스 추가</button>
+	<button type="button" class="btn2">클래스 토글</button>
+	<button type="button" class="btn3">클래스 제거</button>
+	<button type="button" class="btn4">클래스 존재 여부</button>
+	<button type="button" class="btn5">클래스 교체</button>
+</p>
+
+</body>
+</html>

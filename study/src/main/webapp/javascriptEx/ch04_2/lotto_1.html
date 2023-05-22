@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="icon" href="data:;base64,iVBORw0KGgo=">
+<style type="text/css">
+
+table {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+</style>
+
+<script type="text/javascript">
+
+function lotto(){
+	
+	let p=/^[1-5]{1}$/;
+	let num = document.querySelector('#num').value;
+	
+	if(! p.test(num)){
+		if(num<=0 || num>5){
+			alert('1~5매만 구매 가능합니다.');
+			return;
+		}
+		if(isNaN(num)){
+			alert('숫자만 입력하세요.');
+			return;
+		}
+	}
+	
+	var arr=[];
+	let out='';
+	let n;
+	
+	for(let i=1;i<=num;i++){
+		for(let j=0;j<6;j++){
+			arr[j]=Math.floor(Math.random()*45)+1;
+/*			
+			if(arr.indexOf(n)!==-1){
+				j--;
+				continue;
+			}
+			
+			arr.push(n);
+*/			
+		}
+	out+='<p style="color:blue;">'+i+'번째 : '+ arr.join() + '</p>';
+	}
+	document.querySelector("#result").innerHTML=out;
+}
+
+
+</script>
+
+</head>
+<body>
+
+<table>
+	<tr>
+		<td>
+		<input type="text" id="num" placeholder="매수를 입력하세요">
+		<button type="button" onclick="lotto();">구매</button>
+		</td>
+	</tr>
+</table>
+<hr>
+
+<div id="result"></div>
+
+</body>
+</html>

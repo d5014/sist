@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="icon" href="data:;base64,iVBORw0KGgo=">
+</head>
+<body>
+
+<h3>localStorage</h3>
+
+<p>
+	<input type="text" id="subject" placeholder="좋아하는 과목">
+	<button type="button" onclick="addSubject();">추가</button>
+	<button type="button" onclick="deleteSubject();">삭제</button>
+</p>
+<div id="log"></div>
+
+<script type="text/javascript">
+viewSubject();
+
+function viewSubject(){
+	//없으면(배열이 null) 빈배열[] 반환
+	let ss=JSON.parse(localStorage.getItem("subject"))||[];
+	let s=ss.join();//,로 문자열 결합
+	document.querySelector("#log").innerHTML=s;
+}
+
+function addSubject(){
+	
+	const inputEl=document.querySelector("#subject");
+	let s=inputEl.value.trim();
+	if( !s ){
+		inputEl.focus();
+		return;
+	}
+	
+	let ss=JSON.parse(localStorage.getItem("subject"))||[];
+	//let subject=localStorage.subject;
+	//let ss=subject ? JSON.parse(subject):[];
+	
+	ss.push(s);//배열에 값 저장
+	
+	//stringify : 자바스크립트문자를 문자열로 반환
+	localStorage.setItem('subject',JSON.stringify(ss));
+	
+	inputEl.value="";
+	inputEl.focus();
+	
+	viewSubject();
+	
+}
+function deleteSubject(){
+	const inputEl=document.querySelector("#subject");
+	let s=inputEl.value.trim();
+	
+	if(s){
+		let ss=JSON.parse(localStorage.getItem("subject"))||[];
+		
+		//ss배열에 s값의 위치를 찾음
+		let idx=ss.indexOf(s);
+		if(idx===-1){//s가 없다면
+			return;
+		}
+		
+		//삭제
+		ss.splice(idx,1);//idx 위치의 값 1개를 삭제(splice)
+			
+		localStorage.setItem('subject',JSON.stringify(ss));
+		
+		inputEl.value="";
+		
+	} else {
+		localStorage.removeItem('subject');
+	}
+	
+	viewSubject();
+}
+</script>
+
+</body>
+</html>
